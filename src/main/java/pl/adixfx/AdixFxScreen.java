@@ -47,7 +47,7 @@ public class AdixFxScreen extends Screen {
     private boolean closing = false;
 
     public AdixFxScreen() {
-        super(Text.literal("AdixFX"));
+        super(Text.literal("Back Track"));
     }
 
     /** Wołane z konwertera mp3 w tle / odtwarzacza, żeby GUI (np. ▶ przy utworze) od razu się odświeżyło. */
@@ -482,7 +482,7 @@ public class AdixFxScreen extends Screen {
         int accentWidth = Math.max(1, Math.round((panelX2 - panelX1 - 24) * opening));
         GuiUtil.roundedRect(ctx, panelX1 + 12, 7, panelX1 + 12 + accentWidth, 9,
                 GuiUtil.accent(), GuiUtil.PANEL, 1);
-        ctx.drawCenteredTextWithShadow(this.textRenderer, GuiUtil.font(Text.literal("ADIXFX  •  CONTROL CENTER")),
+        ctx.drawCenteredTextWithShadow(this.textRenderer, GuiUtil.font(Text.literal("BACK TRACK  •  CONTROL CENTER")),
                 this.width / 2, 9, GuiUtil.TEXT_DIM);
 
         if (page == Page.MUSIC && playingRowY >= 0) {

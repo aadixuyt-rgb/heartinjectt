@@ -2,11 +2,6 @@ package pl.adixfx;
 
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
 import net.minecraft.client.MinecraftClient;
-import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.client.render.GameRenderer;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexFormat;
-import net.minecraft.client.render.VertexFormats;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.util.math.MatrixStack;
@@ -20,25 +15,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
 public final class Hitboxes {
-    private static final RenderLayer PLAYER_LINES_THROUGH_WALLS = new RenderLayer(
-            "adixfx_player_hitboxes_through_walls",
-            VertexFormats.LINES,
-            VertexFormat.DrawMode.LINES,
-            256,
-            false,
-            true,
-            () -> {
-                RenderSystem.setShader(GameRenderer::getRenderTypeLinesProgram);
-                RenderSystem.enableBlend();
-                RenderSystem.defaultBlendFunc();
-                RenderSystem.disableDepthTest();
-                RenderSystem.lineWidth(1.0f);
-            },
-            () -> {
-                RenderSystem.enableDepthTest();
-                RenderSystem.disableBlend();
-            }
-    );
+    // Uses the standard line layer; custom RenderLayer construction is not public in 1.21.4.
+    private static final RenderLayer PLAYER_LINES_THROUGH_WALLS = RenderLayer.getLines();
 
     private static final int SEGMENTS = 8;   // na ile kawałków dzielimy każdą krawędź w trybie "wiele kolorów"
 
